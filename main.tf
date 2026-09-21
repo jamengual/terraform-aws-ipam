@@ -18,8 +18,10 @@ locals {
   ))))
 
   # its possible to create pools in all regions except the primary, but we must pass the primary region
-  # to aws_vpc_ipam.operating_regions.region_name
-  operating_regions = distinct(concat(local.all_locales, [data.aws_region.current.name]))
+  # to aws_vpc_ipam.operating_regions.region_name.
+  # var.additional_operating_regions registers Regions that no pool uses yet: a pool's locale must
+  # already be an operating Region, so a Region has to be added before the first pool in it exists.
+  operating_regions = distinct(concat(local.all_locales, var.additional_operating_regions, [data.aws_region.current.name]))
 }
 
 data "aws_region" "current" {}

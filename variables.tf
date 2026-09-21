@@ -135,3 +135,9 @@ variable "tags" {
   type        = any
   default     = {}
 }
+
+variable "additional_operating_regions" {
+  description = "Additional AWS Regions to register as IPAM operating Regions, beyond those already implied by the locales in `var.pool_configurations`. A pool's locale must already be an operating Region of the IPAM, so a Region must be registered before the first pool using it can be created. The IPAM's own Region is always included."
+  type        = list(string)
+  default     = []
+}

@@ -146,6 +146,7 @@ The IPAM `operating_region` variable must be set for the primary Region in your 
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_additional_operating_regions"></a> [additional\_operating\_regions](#input\_additional\_operating\_regions) | Additional AWS Regions to register as IPAM operating Regions, beyond those already implied by the locales in `var.pool_configurations`. A pool's locale must already be an operating Region of the IPAM, so a Region must be registered before the first pool using it can be created. The IPAM's own Region is always included. | `list(string)` | `[]` | no |
 | <a name="input_address_family"></a> [address\_family](#input\_address\_family) | IPv4/6 address family. | `string` | `"ipv4"` | no |
 | <a name="input_create_ipam"></a> [create\_ipam](#input\_create\_ipam) | Determines whether to create an IPAM. If `false`, you must also provide a var.ipam\_scope\_id. | `bool` | `true` | no |
 | <a name="input_ipam_scope_id"></a> [ipam\_scope\_id](#input\_ipam\_scope\_id) | (Optional) Required if `var.ipam_id` is set. Determines which scope to deploy pools into. | `string` | `null` | no |
